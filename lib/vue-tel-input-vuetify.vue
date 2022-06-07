@@ -26,9 +26,12 @@
         item-text="name"
         item-value="iso2"
         return-object
+        solo
+        hide-details
       >
         <template v-slot:selection>
           <div :class="activeCountry.iso2.toLowerCase()" class="vti__flag" />
+          <span>{{ `+${activeCountry.dialCode}` }}</span>
         </template>
         <template v-slot:item="data">
           <span :class="data.item.iso2.toLowerCase()" class="vti__flag" />
@@ -94,6 +97,7 @@
       @keydown="onKeyDown"
       @keyup.enter="onEnter"
       @keyup.space="onSpace"
+      solo
     >
       <template #append>
         <slot name="append" />
